@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resizable Grid with Dots</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* grid-gap: 5px; */
+      background-color: rgb(245, 245, 245);
+      padding: 0px;
+      width: 100vh;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vw;
+      resize: both;
+      border: 5px solid black;
+      box-sizing: border-box !important;
+    }
+    
+    .box {
+      /* border: 1px solid red; */
+      padding: 15%;
+      background-color: rgb(245, 245, 245);
+    }
+
+    .dot {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      outline: 2px solid black;
+      background-color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" oncontextmenu="resetGrid(event)">
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+    <div class="box">
+      <div class="dot" onclick="changeColor(this)"></div>
+    </div>
+  </div>
+  
+  <script>
+    function changeColor(element) {
+      var currentColor = element.style.backgroundColor;
+      if (currentColor === "black") {
+        element.style.backgroundColor = "white";
+      } else {
+        element.style.backgroundColor = "black";
+      }
+    }
+
+    function updateGridSize() {
+      var grid = document.querySelector(".grid");
+      var windowSize = Math.min(window.innerWidth, window.innerHeight);
+      grid.style.width = windowSize + "px";
+      grid.style.height = windowSize + "px";
+    }
+    
+    function resetGrid(event) {
+      event.preventDefault();
+      var dots = document.querySelectorAll(".dot");
+      dots.forEach(function(dot) {
+        dot.style.backgroundColor = "white";
+      });
+    }
+
+    window.addEventListener("resize", updateGridSize);
+    updateGridSize();
+  </script>
+</body>
+</html>
